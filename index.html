@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./main.css">
+        <style media="screen">
+            .green {
+                color: green;
+            }
+        </style>
+        <title>Poop</title>
+
+    </head>
+    <body>
+        <h1>GREEN LED</h1>
+        <br>
+        <button id="red" type="button" name="button">RED LED</button>
+    </body>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+
+        socket.on('led', function(){
+            $('h1').toggleClass('green');
+        });
+
+        $('#red').click(function(){
+            socket.emit('red');
+        });
+    </script>
+</html>
